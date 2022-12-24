@@ -17,10 +17,7 @@ import time
 from selenium.webdriver.chrome.options import Options
 import json
 
-# Headless
 
-options = Options()
-options.add_argument("--headless")
 
 # Base Urls
 url='https://careers.microsoft.com/us/en/search-results?rt=university?region=in'
@@ -34,7 +31,13 @@ total_pages=0
 
 #CONFIG
 OUTPUT_FILE="microsoft_jobs.json"
+HEADLESS=True
 
+
+# Headless
+options = Options()
+if HEADLESS:
+    options.add_argument("--headless")
 def sel(url):
     global driver
     driver = Chrome(options=options)
