@@ -84,7 +84,7 @@ def get_indian_jobs(content):
     # print(len(all_jobs.keys()))
 
 
-def get_pages():
+def get_pages(total_pages):
     for i in range(1, total_pages):
 
         try:
@@ -167,7 +167,7 @@ def main():
     print("--Total Pages--> " + str(total_pages))
     print("--Getting Indian Jobs--")
 
-    get_pages()
+    get_pages(total_pages)
 
     print("--Total Indian Jobs--> " + str(len(all_jobs.keys())))
 
