@@ -59,6 +59,8 @@ def sel(url):
 
 def get_indian_jobs(content):
     # print(content)
+    global total_pages, all_jobs, driver, list, OUTPUT_FILE, HEADLESS, options, url, url2
+
     soup = BeautifulSoup(content, features="lxml")
     my_items = soup.find_all("li", {"class": "jobs-list-item"})
     for i in my_items:
@@ -85,6 +87,8 @@ def get_indian_jobs(content):
 
 
 def get_pages(total_pages):
+    global all_jobs, driver, list, OUTPUT_FILE, HEADLESS, options, url, url2
+
     for i in range(1, total_pages):
 
         try:
@@ -98,6 +102,8 @@ def get_pages(total_pages):
 
 
 def get_job_data(job_json):
+    global total_pages, all_jobs, driver, list, OUTPUT_FILE, HEADLESS, options, url, url2
+
     driver.get(job_json["job_link"])
     time.sleep(2)
     soup = BeautifulSoup(driver.page_source, features="lxml")
@@ -153,6 +159,7 @@ def get_job_data(job_json):
 
 
 def main():
+    global total_pages, all_jobs, driver, list, OUTPUT_FILE, HEADLESS, options, url, url2
     print("--Starting Script--")
     driver = sel(url)
     soup = BeautifulSoup(
@@ -198,3 +205,8 @@ def main():
     print("--Closing Driver--")
     driver.close()
     print("--Script Ended--")
+
+
+
+if __name__ == "__main__":
+    main()
